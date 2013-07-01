@@ -2,7 +2,7 @@
     var CuttersLounge = {
         open: function() {
             var frame = document.createElement('iframe');
-            frame.setAttribute('src', '//cutterslounge.de/' + this.getData().id);
+            frame.setAttribute('src', '//staging.cutterslounge.de/' + (this.getData().id || 'sebastians-friseurladen1'));
             frame.setAttribute('id', 'cutterslounge-frame');
 
             frame.setAttribute('style', [
