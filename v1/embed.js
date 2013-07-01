@@ -85,7 +85,7 @@
             var that = this;
             this.overlay.style.opacity = 0;
             setTimeout(function() {
-                that.overlay.remove();
+                that.overlay.parentNode.removeChild(that.overlay);
             }, 300);
         },
 
