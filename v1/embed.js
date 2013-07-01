@@ -1,6 +1,11 @@
 (function() {
     var CuttersLounge = {
         open: function() {
+            if ('ontouchstart' in window) {
+                window.location = 'https://staging.cutterslounge.de/' + (this.getData().id || 'sebastians-friseurladen1');
+                return;
+            }
+
             var frame = document.createElement('iframe');
             frame.setAttribute('src', '//staging.cutterslounge.de/' + (this.getData().id || 'sebastians-friseurladen1'));
             frame.setAttribute('id', 'cutterslounge-frame');
