@@ -1,9 +1,107 @@
+<!doctype html>
 <html>
     <head>
         <title>Cutters Lounge Embed</title>
-        <script src="v1/embed.js" data-id="sebastians-friseurladen1"></script>
+        <script src="https://cutterslounge.de/embed/v1/embed.js" data-id="danas-friseurladen"></script>
+        <style>
+            body {
+                font-family: "Helvetica Neue", helvetica;
+                font-weight: 200;
+            }
+
+            h1, h2 {
+                font-weight: 200;
+            }
+
+            section {
+                float: left;
+                width: 100%;
+                margin-bottom: 30px;
+                padding-left: 30px;
+            }
+
+            br {
+                clear: left;
+            }
+
+            section pre {
+                float: left;
+                padding: 20px;
+                margin-top: 20px;
+
+                border: 1px solid rgba(0, 0, 0, 0.4);
+            }
+
+            section nav ul {
+                float: left;
+                margin: 0;
+                padding: 0;
+
+                border: 1px solid rgba(0, 0, 0, 0.4);
+            }
+
+            section nav ul li {
+                float: left;
+                display: block;
+                margin: 0;
+
+                list-style: none;
+            }
+
+            section nav ul li a {
+                float: left;
+                display: block;
+                padding: 10px;
+
+                background: #e4e2db;
+
+                color: #655d54;
+                text-decoration: none;
+            }
+
+            section nav ul li a:hover {
+                background: #f0efeb;
+
+                color: #9ea463;
+            }
+        </style>
     </head>
     <body>
-    <button id="cutterslounge-button">button</button>
+        <h1>Cutters Lounge Embed Button</h1>
+
+        <section>
+            <h2>Button mit Styling</h2>
+            <button class="cutterslounge-button">Termin anfragen</button>
+            <br>
+            <pre>
+&lt;script src="//cutterslounge.de/embed/v1/embed.js" data-id="sebastians-friseurladen"&gt;&lt;/script&gt;
+&lt;button class="cutterslounge-button"&gt;Termin anfragen&lt;/button&gt;
+</pre>
+        </section>
+
+        <section>
+            <h2>Link ohne Styling</h2>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#termin-anfragen" class="cutterslounge-link">Termin vereinbaren</a></li>
+                    <li><a href="#preise">Preise/Aktionen</a></li>
+                    <li><a href="#ueber-uns">&Uuml;ber uns</a></li>
+                </ul>
+            </nav>
+            <br>
+            <pre>
+&lt;script src="//cutterslounge.de/embed/v1/embed.js" data-id="sebastians-friseurladen"&gt;&lt;/script&gt;
+
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#termin-anfragen" class="cutterslounge-link"&gt;Termin vereinbaren&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#preise"&gt;Preise/Aktionen&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#ueber-uns"&gt;&Uuml;ber uns&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+        </section>
     </body>
 </html>

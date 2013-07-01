@@ -1,13 +1,15 @@
 (function() {
     var CuttersLounge = {
         open: function() {
+            var url = 'https://cutterslounge.de/' + this.getData().id;
+
             if ('ontouchstart' in window) {
-                window.location = 'https://staging.cutterslounge.de/' + (this.getData().id || 'sebastians-friseurladen1');
+                window.location = url
                 return;
             }
 
             var frame = document.createElement('iframe');
-            frame.setAttribute('src', '//staging.cutterslounge.de/' + (this.getData().id || 'sebastians-friseurladen1'));
+            frame.setAttribute('src', url);
             frame.setAttribute('id', 'cutterslounge-frame');
 
             frame.setAttribute('style', [
@@ -93,7 +95,7 @@
 
             for (var i = 0; i < scripts.length; i++) {
                 var script = scripts[i];
-                if (script.getAttribute('src').indexOf('cutterslounge.de/v1/embed.js') !== -1) {
+                if (script.getAttribute('src').indexOf('cutterslounge.de/embed/v1/embed.js') !== -1) {
                     data.id = script.getAttribute('data-id');
                     break;
                 }
@@ -104,37 +106,57 @@
     };
 
     document.addEventListener('DOMContentLoaded', function() {
-        var button = document.getElementById('cutterslounge-button');
-        if (button) {
-            button.onclick =function(event) {
+        if (!CuttersLounge.getData().id) {
+            throw new Error('CuttersLounge.Embed: No id given.');
+            return;
+        }
+
+        var buttons = document.getElementsByClassName('cutterslounge-button');
+        var links = document.getElementsByClassName('cutterslounge-link');
+
+        for (var i=0; i<links.length; i++) {
+            var elem = links[i];
+
+            elem.onclick =function(event) {
                 event.preventDefault();
                 CuttersLounge.open();
             };
         }
 
-        button.setAttribute('style', [
-            'padding: 12px 20px',
-            'border: 1px solid #667694',
-            'border-radius: 3px',
-            'background: #7283a3',
-            'box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
-            '-webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
-            '-moz-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
-            '-mos-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
-            'text-align: center',
-            'font-weight: bold',
-            'font-size: 14px',
-            'color: #fff',
-            'cursor: pointer'
-        ].join(';'));
+        for (var i=0; i<buttons.length; i++) {
+            var elem = buttons[i];
 
-        button.onmouseover = function() {
-            button.style.background = '#667694';
-        };
+            elem.onclick =function(event) {
+                event.preventDefault();
+                CuttersLounge.open();
+            };
 
-        button.onmouseout = function() {
-            button.style.background = '#7283a3';
-        };
+            if (elem.className.indexOf('cutterslounge-button') !== -1) {
+                elem.setAttribute('style', [
+                    'padding: 12px 20px',
+                    'border: 1px solid #667694',
+                    'border-radius: 3px',
+                    'background: #7283a3',
+                    'box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
+                    '-webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
+                    '-moz-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
+                    '-mos-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1)',
+                    'text-align: center',
+                    'font-weight: bold',
+                    'font-size: 14px',
+                    'color: #fff',
+                    'cursor: pointer'
+                ].join(';'));
+
+                elem.onmouseover = function() {
+                    elem.style.background = '#667694';
+                };
+
+                elem.onmouseout = function() {
+                    elem.style.background = '#7283a3';
+                };
+            }
+        }
     });
 
 }());
