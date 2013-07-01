@@ -5,33 +5,17 @@
             frame.setAttribute('src', '//staging.cutterslounge.de/' + (this.getData().id || 'sebastians-friseurladen1'));
             frame.setAttribute('id', 'cutterslounge-frame');
 
-            var style = [
+            frame.setAttribute('style', [
+                'width: 700px',
+                'height: 550px',
                 'position: fixed',
                 'z-index: 100010',
+                'top: 50%',
+                'right: 50%',
+                'margin-top: -275px',
+                'margin-right: -350px',
                 'border: none'
-            ];
-
-            if ('ontouchstart' in window) {
-                style = style.concat([
-                    'top: 0',
-                    'right: 0',
-                    'left: 0',
-                    'bottom: 0',
-                    'width: 100%',
-                    'height: 100%'
-                ]);
-            } else {
-                style = style.concat([
-                    'top: 50%',
-                    'right: 50%',
-                    'width: 700px',
-                    'height: 550px',
-                    'margin-top: -275px',
-                    'margin-right: -350px'
-                ]);
-            }
-
-            frame.setAttribute('style', style.join(';'));
+            ].join(';'));
 
             var overlay = document.createElement('div');
             overlay.setAttribute('style', [
@@ -49,28 +33,26 @@
                 'opacity: 0'
             ].join(';'));
 
-            if (!('ontouchstart' in window)) {
-                var overlayClose = document.createElement('div');
-                overlayClose.setAttribute('style', [
-                    'position: fixed',
-                    'top: 0',
-                    'right: 0',
-                    'padding: 20px',
-                    'z-index: 100010',
-                    'background: rgba(255, 255, 255, 0.4)',
-                    'color: #fff',
-                    'cursor: pointer'
-                ].join(';'));
+            var overlayClose = document.createElement('div');
+            overlayClose.setAttribute('style', [
+                'position: fixed',
+                'top: 0',
+                'right: 0',
+                'padding: 20px',
+                'z-index: 100010',
+                'background: rgba(255, 255, 255, 0.4)',
+                'color: #fff',
+                'cursor: pointer'
+            ].join(';'));
 
-                overlayClose.innerHTML = 'Zur&uuml;ck';
-                overlay.appendChild(overlayClose);
-            }
+            overlayClose.innerHTML = 'Zur&uuml;ck';
 
             var that = this;
             overlay.onclick = function() {
                 that.close();
             };
 
+            overlay.appendChild(overlayClose);
             overlay.appendChild(frame);
             document.body.appendChild(overlay);
             this.overlay = overlay;
@@ -84,7 +66,7 @@
             var that = this;
             this.overlay.style.opacity = 0;
             setTimeout(function() {
-                that.overlay.parentNode.removeChild(that.overlay);
+                that.overlay.remove();
             }, 300);
         },
 
