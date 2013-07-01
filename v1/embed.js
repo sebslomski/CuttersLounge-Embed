@@ -41,24 +41,36 @@
             var overlayClose = document.createElement('div');
             overlayClose.setAttribute('style', [
                 'position: fixed',
-                'top: 0',
-                'right: 0',
-                'padding: 20px',
+                'top: 50%',
+                'right: 50%',
+                'width: 30px',
+                'height: 30px',
+                'margin-top: -290px',
+                'margin-right: -365px',
                 'z-index: 100010',
-                'background: rgba(255, 255, 255, 0.4)',
-                'color: #fff',
+                'border-radius: 50%',
+                'background: #fff',
+                'box-shadow: 0px 0px 3px rgba(0,0,0,0.8)',
+                '-webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.8)',
+                '-moz-box-shadow: 0px 0px 3px rgba(0,0,0,0.8)',
+                '-ms-box-shadow: 0px 0px 3px rgba(0,0,0,0.8)',
+                'color: #333746',
+                'line-height: 30px',
+                'font-weight: bold',
+                'text-align: center',
+                'font-family: helvetica',
                 'cursor: pointer'
             ].join(';'));
 
-            overlayClose.innerHTML = 'Zur&uuml;ck';
+            overlayClose.innerHTML = 'x';
 
             var that = this;
             overlay.onclick = function() {
                 that.close();
             };
 
-            overlay.appendChild(overlayClose);
             overlay.appendChild(frame);
+            overlay.appendChild(overlayClose);
             document.body.appendChild(overlay);
             this.overlay = overlay;
 
