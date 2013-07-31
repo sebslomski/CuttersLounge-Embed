@@ -9,7 +9,7 @@
             }
 
             var frame = document.createElement('iframe');
-            frame.setAttribute('src', url);
+            frame.setAttribute('src', url + '?embed=1');
             frame.setAttribute('id', 'cutterslounge-frame');
 
             frame.setAttribute('style', [
