@@ -95,7 +95,7 @@
 
             for (var i = 0; i < scripts.length; i++) {
                 var script = scripts[i];
-                if (script.getAttribute('src').indexOf('cutterslounge.de/embed/v1/embed.js') !== -1) {
+                if (script.hasAttribute('src') && script.getAttribute('src').indexOf('cutterslounge.de/embed/v1/embed.js') !== -1) {
                     data.id = script.getAttribute('data-id');
                     break;
                 }
