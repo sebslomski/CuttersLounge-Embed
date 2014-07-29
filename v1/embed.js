@@ -133,6 +133,7 @@
 
             if (elem.className.indexOf('cutterslounge-button') !== -1) {
                 elem.setAttribute('style', [
+                    'width': 'auto',
                     'padding: 12px 20px',
                     'border: 1px solid #667694',
                     'border-radius: 3px',
